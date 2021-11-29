@@ -138,5 +138,33 @@ namespace TechJobsConsole
 
             return rowValues.ToArray();
         }
+        /*create a new public static method that will search for a string within each of the columns.*/
+
+        public static List<Dictionary<string, string>> FindByValue(string value)
+
+        {
+
+            LoadData();
+
+            List<Dictionary<string, string>> newSearch = new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> search in AllJobs)
+            {
+                foreach (string key in search.Keys)
+                {
+                    if (search[key].ToLower().Contains(value))
+                    {
+                        newSearch.Add(search);
+                    }
+                }
+            }
+            return newSearch;
+        }
     }
 }
+
+
+
+
+
+ 
