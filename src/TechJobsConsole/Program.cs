@@ -57,27 +57,28 @@ namespace TechJobsConsole
                     // What is their search term?
                     Console.WriteLine("\nSearch term: ");
                     string searchTerm = Console.ReadLine();
+                    string choice = searchTerm.ToLower();
 
                     List<Dictionary<string, string>> searchResults;
 
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        searchResults = JobData.FindByValue(searchTerm);
+                        searchResults = JobData.FindByValue(choice);
                         PrintJobs(searchResults);
                     }
-                
+
                     else
                     {
-                        searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
+                        searchResults = JobData.FindByColumnAndValue(columnChoice, choice);
                         PrintJobs(searchResults);
                     }
-                    
+
 
                 }
             }
         }
-        
+
         /*
          * Returns the key of the selected item from the choices Dictionary
          */
@@ -118,6 +119,8 @@ namespace TechJobsConsole
             } while (!isValidChoice);
 
             return choiceKeys[choiceIdx];
+
+            
         }
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
@@ -130,15 +133,21 @@ namespace TechJobsConsole
 
                 foreach (KeyValuePair<string, string> info in job)
                 {
+
+
+
                     Console.WriteLine($"{info.Key}: {info.Value}");
-                    
+
                 }
-                Console.WriteLine("-----------------------");
+                Console.WriteLine("*****");
+
             }
         }
-    }
 
+    }
 }
+
+
 
 
   
