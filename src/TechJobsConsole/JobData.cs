@@ -49,7 +49,7 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value))
                 {
                     jobs.Add(row);
                 }
@@ -139,7 +139,7 @@ namespace TechJobsConsole
             return rowValues.ToArray();
         }
         /*create a new public static method that will search for a string within each of the columns.*/
-
+        //the FindByValue method only needs the parameter of value since that is all we are looking search for
         public static List<Dictionary<string, string>> FindByValue(string value)
 
         {
@@ -147,11 +147,14 @@ namespace TechJobsConsole
             LoadData();
 
             List<Dictionary<string, string>> newSearch = new List<Dictionary<string, string>>();
-
+            /*loop trough the Dictionary */
             foreach (Dictionary<string, string> search in AllJobs)
             {
+                /*loop through the string found withinin the dictionary*/
                 foreach (string key in search.Keys)
                 {
+                    //if the sarch key contains the value add the value to the newSearch
+                    //make toLwer so tat search will be case sensitive
                     if (search[key].ToLower().Contains(value))
                     {
                         newSearch.Add(search);
