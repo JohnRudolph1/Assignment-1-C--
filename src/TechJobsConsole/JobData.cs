@@ -158,11 +158,14 @@ namespace TechJobsConsole
                     if (search[key].ToLower().Contains(value))
                     {
                         newSearch.Add(search);
+                        break;
                     }
                 }
             }
             return newSearch;
+             
         }
+         
     }
 }
 
